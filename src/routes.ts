@@ -2,7 +2,7 @@
 
 // pages
 import Home from "./pages/home";
-import About from "./pages/about";
+import Quiz from "./pages/quiz";
 import Products from "./pages/products";
 
 // other
@@ -26,11 +26,11 @@ export const routes: Array<Route> = [
         component: Home
     },
     {
-        key: 'about-route',
+        key: 'quiz-route',
         title: 'About',
-        path: '/gottesvorstellungen',
+        path: '/quiz',
         enabled: true,
-        component: About
+        component: Quiz
     },
     {
         key: 'products-route',
