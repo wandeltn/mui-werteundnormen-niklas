@@ -3,6 +3,7 @@ import Paper from '@mui/material/Paper';
 import MCQuestion from '../interfaces/questionType';
 import Button, { Radio, RadioGroup } from '@mui/material';
 import { FormControlLabel } from '@mui/material';
+import { Form } from 'react-router-dom';
 
 
 function MultipleCoice(props: MCQuestion) {
@@ -44,19 +45,18 @@ function MultipleCoice(props: MCQuestion) {
 
     return(
         <Paper elevation={1}>
-            {choicesList.map((item) => {
-                return(
-                    <RadioGroup
-                        aria-labelledby="demo-error-radios"
-                        name="quiz"
-                        value={value}
-                        onChange={handleRadioChange}
-                    >
-                        <FormControlLabel control={<Radio />} label="The best!" />
-                        <FormControlLabel value="worst" control={<Radio />} label="The worst." />
-                    </RadioGroup>
-                );
-            })}
+            <RadioGroup
+                aria-labelledby="demo-error-radios"
+                value={value}
+                name="quiz"
+                onChange={handleRadioChange}
+                >
+                {choicesList.map((item) => {
+                    return(
+                        <FormControlLabel value={item} control={<Radio />} label={item} />
+                    );
+                })} 
+            </RadioGroup>
         </Paper>
     )
 }

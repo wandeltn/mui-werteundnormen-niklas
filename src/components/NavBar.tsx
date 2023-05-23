@@ -8,6 +8,7 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
+import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
@@ -115,7 +116,7 @@ function ResponsiveAppBar() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              <a href={page.toLowerCase()}>
+              <Link to={page} >
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}
@@ -123,7 +124,7 @@ function ResponsiveAppBar() {
                   >
                   {page}
                 </Button>
-              </a>
+              </Link>
             ))}
           </Box>
 
