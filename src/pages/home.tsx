@@ -1,13 +1,14 @@
 // src/pages/Home.tsx
 
 import React, {ReactElement, FC} from "react";
-import {Box, Typography} from "@mui/material";
+import {Typography} from "@mui/material";
 import Grid from '@mui/material/Unstable_Grid2';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
+import Switch from '@mui/material/Switch';
 
 const Home: FC<any> = (): ReactElement => {
     return (
@@ -31,9 +32,7 @@ const Home: FC<any> = (): ReactElement => {
                         </Typography>
                     </CardContent>
                     <CardActions>
-                        <a href="gottesvorstellung">
-                            <Button>Mehr lernen</Button>
-                        </a>
+                        <Button href="gottesvorstellungen">Mehr lernen</Button>
                     </CardActions>
                 </Card>
             </Grid>
@@ -53,9 +52,7 @@ const Home: FC<any> = (): ReactElement => {
                         </Typography>
                     </CardContent>
                     <CardActions>
-                        <a href="essensvorschriften">
-                            <Button>Mehr lernen</Button>
-                        </a>
+                        <Button href="essensvorschriften">Mehr lernen</Button>
                     </CardActions>
                 </Card>
             </Grid>
@@ -72,6 +69,11 @@ const Home: FC<any> = (): ReactElement => {
                             und Männer tragen lange Hosen.
                         </Typography>
                     </CardContent>
+                    <CardActions>
+                        <Button href="kleiderordnung">
+                            Mehr lernen
+                        </Button>
+                    </CardActions>
                 </Card>
             </Grid>
             <Grid xs={12} sm={4}>
@@ -87,21 +89,30 @@ const Home: FC<any> = (): ReactElement => {
                             für Männer die Beschneidung und für alle das Untertauchen in einem rituellen Tauchbad (Mikwe).
                         </Typography>
                     </CardContent>
+                    <CardActions>
+                        <Button href="konvertierung">
+                            Mehr lernen
+                        </Button>
+                    </CardActions>
                 </Card>
             </Grid>
             <Grid xs={12} sm={4}>
                 <Card>
                     <CardMedia
                         sx={{height: 200}}
-                        image="https://www.planet-wissen.de/kultur/religion/juedisches_leben/juedisches-leben-kuehlschrank-100~_v-ARDFotogalerie.jpg">
+                        image="https://www.planet-wissen.de/kultur/religion/judentum/tempxjudentumgebetgjpg100~_v-gseapremiumxl.jpg">
                     </CardMedia>
                     <CardContent>
                         <Typography variant="body1" textAlign={"left"}>
-                        Der jüdische Tag ist vom Aufstehen bis zum Schlafengehen durch religiöse Vorschriften strukturiert. Auch bei allem,
-                        was man isst oder einnimmt, gelten besondere Gesetze, die "Kaschrut"-Regeln. Rein und erlaubt ist dabei nur Koscheres.
+                        Der jüdische Tag ist vom Aufstehen bis zum Schlafengehen durch religiöse Vorschriften strukturiert. 
                         Dabei mögen viele Regeln für andere wilkürlich wirken, sind aber für manche Juden überaus wichtig.
                         </Typography>
                     </CardContent>
+                    <CardActions>
+                        <Button href="">
+                            Mehr lernen
+                        </Button>
+                    </CardActions>
                 </Card>
             </Grid>
         </Grid>

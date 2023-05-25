@@ -3,13 +3,14 @@
 // pages
 import Home from "./pages/home";
 import Quiz from "./pages/quiz";
-import Products from "./pages/products";
+import Products from "./pages/gottesvorstellungen";
+import Quellenverzeichnis from "./pages/quellenverzeichnis";
 
 // other
 import {FC} from "react";
 
 // interface
-interface Route {
+export interface Route {
     key: string,
     title: string,
     path: string,
@@ -17,26 +18,48 @@ interface Route {
     component: FC<{}>
 }
 
-export const routes: Array<Route> = [
-    {
-        key: 'home-route',
-        title: 'Home',
-        path: '/',
-        enabled: true,
-        component: Home
-    },
-    {
+export const breadcrumbNameMap: { [key: string]: string } = {
+    '/gottesvorstellungen': 'Gottesvorstellungen',
+    '/quiz': 'Quiz',
+    "/essensvorschriften": "Essensvorschriften",
+    "/quellenverzeichnis": "Quellenverzeichnis"
+};
+
+export const routes: Array<Array<Route>> = [
+    [
+        {
+            key: 'home-route',
+            title: 'Home',
+            path: '/',
+            enabled: true,
+            component: Home
+        },
+    ],
+    [
+        {
+            key: 'gottesvorstellungen-route',
+            title: 'G´tt',
+            path: '/gottesvorstellungen',
+            enabled: true,
+            component: Products
+        },
+    ],
+    [
+        {   
         key: 'quiz-route',
-        title: 'About',
+        title: 'Quiz',
         path: '/quiz',
-        enabled: true,
-        component: Quiz
-    },
-    {
-        key: 'products-route',
-        title: 'Products',
-        path: '/products',
-        enabled: true,
-        component: Products
-    }
+            enabled: true,
+            component: Quiz
+        },
+    ],
+    [
+        {
+            key: 'quellenverzeichnis-route',
+            title: "Quellen",
+            path: "/quellenverzeichnis",
+            enabled: true,
+            component: Quellenverzeichnis
+        },
+    ]
 ]

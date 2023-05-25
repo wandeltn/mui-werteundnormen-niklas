@@ -1,20 +1,21 @@
-// src/pages/Home.tsx
+// src/pages/quellenverzeichnis.tsx
 
 import React, {ReactElement, FC} from "react";
 import {Box, Typography} from "@mui/material";
 
-const Home: FC<any> = (): ReactElement => {
+const Quellenverzeichnis: FC<any> = (): ReactElement => {
     return (
         <Box sx={{
             flexGrow: 1,
-            backgroundColor: 'whitesmoke',
             display: 'flex',
             justifyContent: 'center',
-            alignItems: 'center'
+            alignItems: 'top'
         }}>
-            <Typography variant="h3">Products</Typography>
+            <Typography variant="h2">
+                Quellenverzeichnis
+            </Typography>
         </Box>
     );
 };
 
-export default Home;
+export default Quellenverzeichnis;
