@@ -7,9 +7,8 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import { Link } from 'react-router-dom';
+import { Link } from '@mui/material';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import SynagogueIcon from '@mui/icons-material/Synagogue';
 import { routes } from '../routes';
@@ -24,18 +23,65 @@ routes.map((routeList) => {
     })
 })
 
+
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
+    const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
+    
+    const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+        setAnchorElNav(event.currentTarget);
+    };
+    
+    const handleCloseNavMenu = () => {
+        setAnchorElNav(null);
+    };
+    function HiddenMenuItem(props: {
+        "hidden": boolean, 
+        "key": string, 
+        "title": string, 
+        "path": string
+        children?: React.ReactNode
+    }) {
+        if (props.hidden) {
+            return <></>
+        } else {
+            return (
+                <MenuItem 
+                    key={props.key} 
+                    onClick={handleCloseNavMenu}
+                    href={props.path}
+                    >
+                    {props.children}
+                    <Link textAlign="center" href={props.path}>{props.title}</Link>
+                </MenuItem>
+            )
+        }
+    }
 
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
+    function HiddenButton(props: {
+            "hidden": boolean, 
+            "key": string,
+            "title": string, 
+            "path": string, 
+            children?: React.ReactNode;
+    }) {
+        if (props.hidden) {
+            return <></>
+        } else {
+            return (
+                <Button
+                    key={props.key}
+                    onClick={handleCloseNavMenu}
+                    sx={{ my: 2, color: 'white', display: 'block' }}
+                    href={props.path}
+                    hidden
+                >
+                    {props.title}
+                </Button>
+            )
+        }
+    }
 
   return (
     <AppBar position="static">
@@ -89,11 +135,19 @@ function ResponsiveAppBar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
+
+                {routes.map((route) => (
+                
+                    route.map((linkDest) =>{
+                        return (
+                            <HiddenMenuItem 
+                                hidden={linkDest.hidden} 
+                                key={linkDest.key} 
+                                title={linkDest.title}
+                                path={linkDest.path}/>
+                        )
+                    })
+                ))}     
             </Menu>
           </Box>
           <SynagogueIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -120,15 +174,11 @@ function ResponsiveAppBar() {
                 
                 route.map((linkDest) =>{
                     return(
-                        <Link to={linkDest.path} >
-                            <Button
+                        <HiddenButton 
+                            hidden={linkDest.hidden}
                             key={linkDest.key}
-                            onClick={handleCloseNavMenu}
-                            sx={{ my: 2, color: 'white', display: 'block' }}
-                            >
-                            {linkDest.title}
-                            </Button>
-                        </Link>
+                            path={linkDest.path}
+                            title={linkDest.title}/>
                     )
                 })
             ))}

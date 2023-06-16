@@ -3,6 +3,8 @@
 // pages
 import Home from "./pages/home";
 import Quiz from "./pages/quiz";
+import Orte from "./pages/orte";
+import Diaspora from "./pages/diaspora"
 import Products from "./pages/gottesvorstellungen";
 import Quellenverzeichnis from "./pages/quellenverzeichnis";
 
@@ -15,13 +17,16 @@ export interface Route {
     title: string,
     path: string,
     enabled: boolean,
-    component: FC<{}>
+    component: FC<{}>,
+    hidden: boolean
 }
 
 export const breadcrumbNameMap: { [key: string]: string } = {
+    "/orte": "Orte",
+    "/orte/diaspora": "Diaspora",
+    "/essensvorschriften": "Essensvorschriften",
     '/gottesvorstellungen': 'Gottesvorstellungen',
     '/quiz': 'Quiz',
-    "/essensvorschriften": "Essensvorschriften",
     "/quellenverzeichnis": "Quellenverzeichnis"
 };
 
@@ -32,8 +37,27 @@ export const routes: Array<Array<Route>> = [
             title: 'Home',
             path: '/',
             enabled: true,
-            component: Home
+            component: Home,
+            hidden: false
         },
+    ],
+    [
+        {
+            key: "orte-route",
+            title: "Orte",
+            path: "/orte",
+            enabled: true,
+            component: Orte,
+            hidden: false
+        },
+        {
+            key: "orte-diaspora-route",
+            title: "Diaspora",
+            path: "/orte/diaspora",
+            enabled: true,
+            component: Diaspora,
+            hidden: true
+        }
     ],
     [
         {
@@ -41,16 +65,18 @@ export const routes: Array<Array<Route>> = [
             title: 'G´tt',
             path: '/gottesvorstellungen',
             enabled: true,
-            component: Products
+            component: Products,
+            hidden: false
         },
     ],
     [
         {   
-        key: 'quiz-route',
-        title: 'Quiz',
-        path: '/quiz',
+            key: 'quiz-route',
+            title: 'Quiz',
+            path: '/quiz',
             enabled: true,
-            component: Quiz
+            component: Quiz,
+            hidden: true
         },
     ],
     [
@@ -59,7 +85,8 @@ export const routes: Array<Array<Route>> = [
             title: "Quellen",
             path: "/quellenverzeichnis",
             enabled: true,
-            component: Quellenverzeichnis
+            component: Quellenverzeichnis,
+            hidden: true
         },
     ]
 ]
